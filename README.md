@@ -20,6 +20,6 @@ Program PrettyFox made to protect people from vulnerability BadUSB.
  - `./installer.sh`
 
 ### [+] Usage
- - `./chmod +x main.sh`
+ - `chmod +x main.sh`
  - `./main.sh`
 
