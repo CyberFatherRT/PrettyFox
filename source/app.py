@@ -1,13 +1,13 @@
 import os
-import sys
 import random
-from PyQt5 import QtCore, QtGui
+import sys
 
+from PyQt5 import QtCore, QtGui
 from PyQt5.QtWidgets import QMainWindow, QMessageBox, QApplication, QWidget, QLabel, QPushButton, QLineEdit
 
 
 class Ui_PrettyFox(object):
-    def __init__(self, id, device_type, name, blocked_devices):
+    def __init__(self, id, device_type, name, blocked_devices, path):
         self.failed_btn = None
         self.filed_widget = None
         self.success_widget = None
@@ -25,6 +25,7 @@ class Ui_PrettyFox(object):
         self.name = name
         self.id = id
         self.blocked_devices = blocked_devices
+        self.path = path
 
     def setupUi(self, PrettyFox):
         PrettyFox.setObjectName("PrettyFox")
@@ -90,6 +91,7 @@ class Ui_PrettyFox(object):
         self.success_widget.setStandardButtons(QMessageBox.Ok)
         for i in self.blocked_devices:
             os.system(f'xinput enable {i}')
+        os.system(f'xinput > {self.path}/files/oldDevices.txt')
         self.success_widget.exec_()
         QApplication.quit()
 
@@ -138,10 +140,10 @@ class Ui_PrettyFox(object):
         self.oauth_label.setText(_translate("PrettyFox", "Для авторизации нового устройства, решите уравнение"))
 
 
-def application(device_id, device_type='Keyboard', device_name='Undefined', devices=()):
+def application(device_id, path, device_type='Keyboard', device_name='Undefined', devices=()):
     app = QApplication(sys.argv)
     PrettyFox = QMainWindow()
-    ui = Ui_PrettyFox(device_id, device_type, device_name, devices)
+    ui = Ui_PrettyFox(device_id, device_type, device_name, devices, path)
     ui.setupUi(PrettyFox)
     ui.oauth()
     PrettyFox.show()

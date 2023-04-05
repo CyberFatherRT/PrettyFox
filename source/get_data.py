@@ -13,15 +13,11 @@ def get_data() -> tuple[dict, str]:
             i = re.split(' ', i, 6)
             data[i[5]] = {'Bus': i[1],
                           'Device': i[3][:-1],
-                          'Type': 'Mouse' if 'mouse' in i[-1].lower() else 'Keyboard' if 'keyboard' in i[-1].lower()
-                          else 'Drive' if 'drive' in i[-1].lower() else 'Undefined',
+                          'Type': 'Drive' if 'drive' in i[-1].lower() else 'Keyboard' if 'keyboard' in i[-1].lower()
+                          else 'Mouse' if 'mouse' in i[-1].lower() else 'Input Device',
                           'Name': i[-1]
                           }
         ids = set(ids.read().split(';'))
         for k in data.keys():
             if md5(k.encode()).hexdigest() not in ids:
                 return data[k], k
-
-
-if __name__ == '__main__':
-    print(get_data())
