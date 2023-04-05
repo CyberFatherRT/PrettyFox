@@ -122,7 +122,7 @@ class Ui_PrettyFox(object):
         try:
             if int(self.lineEdit.text()) == self.equation[1]:
                 with open('files/ids.txt', 'a') as ids:
-                    ids.write(f";{self.id}")
+                    ids.write(f"{self.id}\n")
                 self.success()
             else:
                 self.fail()

@@ -1,1 +1,1 @@
-sudo apt install python3-pip ; pip3 install pyqt5 ; sudo apt install xinput ; xinput > files/oldDevices.txt
+sudo apt install python3-pip ; pip3 install pyqt5 ; sudo apt install xinput ; xinput > files/oldDevices.txt ; python3 source/get_data.py

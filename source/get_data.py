@@ -17,7 +17,13 @@ def get_data() -> tuple[dict, str]:
                           else 'Mouse' if 'mouse' in i[-1].lower() else 'Input Device',
                           'Name': i[-1]
                           }
-        ids = set(ids.read().split(';'))
+        ids = set(ids.read().split('\n'))
         for k in data.keys():
             if md5(k.encode()).hexdigest() not in ids:
-                return data[k], k
+                yield data[k], k
+
+
+if __name__ == '__main__':
+    with open('files/ids.txt', 'a') as ids:
+        for i in get_data():
+            ids.write(f"{md5(i[1].encode()).hexdigest()}\n")
