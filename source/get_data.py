@@ -24,6 +24,6 @@ def get_data() -> tuple[dict, str]:
 
 
 if __name__ == '__main__':
-    with open('files/ids.txt', 'a') as ids:
+    with open('../files/ids.txt', 'a') as ids:
         for i in get_data():
             ids.write(f"{md5(i[1].encode()).hexdigest()}\n")
