@@ -5,8 +5,8 @@ from hashlib import md5
 
 def get_data() -> tuple[dict, str]:
     data = {}
-    os.system('lsusb > files/data.txt')
-    with open('files/data.txt') as file, open('files/ids.txt') as ids:
+    os.system('lsusb > ../files/data.txt')
+    with open('../files/data.txt') as file, open('../files/ids.txt') as ids:
         for i in file.read().strip().split('\n'):
             if 'hub' in i.lower():
                 continue
