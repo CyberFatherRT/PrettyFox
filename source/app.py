@@ -121,7 +121,7 @@ class Ui_PrettyFox(object):
     def check(self):
         try:
             if int(self.lineEdit.text()) == self.equation[1]:
-                with open('files/ids.txt', 'a') as ids:
+                with open(f'{self.path}/files/ids.txt', 'a') as ids:
                     ids.write(f"{self.id}\n")
                 self.success()
             else:

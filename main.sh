@@ -1,1 +1,2 @@
-python ./source/main.py
+pwd | python ./source/main.py
+

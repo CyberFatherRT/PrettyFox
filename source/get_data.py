@@ -3,10 +3,10 @@ import re
 from hashlib import md5
 
 
-def get_data() -> tuple[dict, str]:
+def get_data(pwd) -> tuple[dict, str]:
     data = {}
-    os.system('lsusb > ../files/data.txt')
-    with open('../files/data.txt') as file, open('../files/ids.txt') as ids:
+    os.system(f'lsusb > {pwd}/files/data.txt')
+    with open(f'{pwd}/files/data.txt') as file, open(f'{pwd}/files/ids.txt') as ids:
         for i in file.read().strip().split('\n'):
             if 'hub' in i.lower():
                 continue
@@ -24,6 +24,7 @@ def get_data() -> tuple[dict, str]:
 
 
 if __name__ == '__main__':
-    with open('files/ids.txt', 'a') as ids:
-        for i in get_data():
+    pwd = input()
+    with open(f'{pwd}/files/ids.txt', 'a') as ids:
+        for i in get_data(pwd):
             ids.write(f"{md5(i[1].encode()).hexdigest()}\n")
