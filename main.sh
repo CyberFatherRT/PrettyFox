@@ -1,2 +1,2 @@
-pwd | python ./source/main.py
+pwd | python ${PWD}/source/main.py
 
