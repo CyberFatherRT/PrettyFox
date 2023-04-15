@@ -16,7 +16,7 @@ Program PrettyFox made to protect people from vulnerability BadUSB.
 ### [+] Installation for Ubuntu/Debian
  - `git clone https://github.com/TheGodfatherru/PrettyFox.git`
  - `cd PrettyFox`
- - `./installer.sh`
+ - `./setup.sh`
 
 ### [+] Usage
  - `./PrettyFox.sh`
